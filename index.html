@@ -6,19 +6,45 @@
     <!--loading script-->
     <script src="scripts/loading.js"></script>
     <!--stylesheets-->
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"></link>
     <link rel="stylesheet" href="styles/index.css"></link>
   </head>
   <body>
-    <section class="masthead">
+    <section id="navigation">
+      <nav class="row">
+        <div class="col">
+          <h4 id="nav-about">ABOUT</h4>
+        </div>
+        <div class="col">
+          <h4 id="nav-home">HOME</h4>
+        </div>
+        <div class="col">
+          <h4 id="nav-experiences">EXPERIENCES</h4>
+        </div>
+      </nav>
+    </section>
+    <section id="content">
+      <div id="masthead" class="row">
+        <div id="left-content" class="col">
+          <img id="me" src="./resources/profile.png" class="respond" alt="me!"></img>
+        </div>
+        <div id="right-content" class="col">
+          <h1 class="display-lg">Software Developer</h1>
+          <h2 class="display-sm">MICHAEL LI</h2>
+          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section id="footer">
       <div class="row">
-
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
       </div>
     </section>
     <!--importing scripts-->
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="node_modules/popper.js/dist/popper.min.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="scripts/index.js"></script>
   </body>
 </html>
