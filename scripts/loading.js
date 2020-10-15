@@ -9,6 +9,7 @@ function loadAnimations(){
   setTimeout(() => scrambleText("#name","MICHAEL LI"),500);
   setTimeout(() => fadein("#bio",0.5,0.05),500);
   setTimeout(() => fadein("#resume-link",1.0,0.05),700);
+  setTimeout(() => blinkChar("#name","_"), 1220);
 }
 
 function scrambleText(object,str){
@@ -76,3 +77,20 @@ function zoomRight(object,dest,rate){ //*** REQUIRES RIGHT PROPERTY AND NO LEFT
     obj.style.right = right.toString()+"px";
   }, 20);
 }
+
+function blinkChar(object,char){
+  var obj = document.querySelector(object);
+  let display = false;
+  var blink = setInterval(() => {
+    if(display){
+      obj.innerHTML = obj.innerHTML.substring(0,obj.innerHTML.length-1);
+      display = false;
+    }
+    else{
+      obj.innerHTML += char;
+      display = true;
+    }
+  }, 530);
+}
+
+
