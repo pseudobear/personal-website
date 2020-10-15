@@ -1,7 +1,7 @@
 # peronal-website
 just a personal project
 
-# **update**
+**update**
 website is now up at michaelcli.com hosted on digital ocean!
 
 Man. I really spent a whole 30 minutes trying all sorts of things to see why the domain couldn't find the server IP
