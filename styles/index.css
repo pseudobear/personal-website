@@ -12,6 +12,12 @@
 #nav-about,#nav-home,#nav-experiences{
   position: relative;
 }
+#nav-about{
+  right: 0px;
+}
+#nav-experiences{
+  left: 0px;
+}
 #content{
   position: fixed;
   width: 100%;
