@@ -1,0 +1,9 @@
+{
+  "name": "personal-website",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/pseudobear/personal-website.git",
+  "author": "Michael Li",
+  "license": "MIT",
+  "dependencies": {}
+}
