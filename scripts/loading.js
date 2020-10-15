@@ -16,9 +16,7 @@ function scrambleText(object,str){
   var obj = document.querySelector(object);
   obj.innerHTML = "";
   function assemble(str){
-    if(str.length == 0){
-      return;
-    }
+    if(str.length == 0)return;
     let count = 0;
     obj.innerHTML = obj.innerHTML + "_";
     var scram = setInterval(() => {
