@@ -41,7 +41,7 @@
 #me{
   position: absolute;
   bottom: 0;
-  right: calc(-600px + 90%);
+  right: -20vh;
   opacity: 0;
 }
 #bio{
