@@ -1,4 +1,4 @@
-var windowPosition = 0;   //0 is for center, -100 is left and 100 is right may go in between
+var pagePosition = 0;   //0 is for home, 1 is about and 2 is for experiences
 var home = document.getElementById("home");
 var about = document.getElementById("about");
 var experiences = document.getElementById("experiences");
@@ -7,43 +7,39 @@ var navAbout = document.getElementById("nav-about");
 var navExperiences = document.getElementById("nav-experiences");
 
 function init (){
-
-  //DEV PURPOSE CODE START 
-    windowPosition = 0;
-  //DEV PURPOSE CODE END
-  
   adjustNav();
-  adjustPageDisplay();
+  adjustPageDisplay("home");
 }
-function adjustMe(){   //make image more responsive for smaller devices
-}
-function adjustPageDisplay(){
-  if(windowPosition<=50 && windowPosition>=-50){
+function adjustPageDisplay(page){
+  if(page=="home"){
     home.style.display = "block";
     about.style.display = "none";
     experiences.style.display = "none";
+    pagePosition = 0;
   }
-  if(windowPosition<-50){
+  if(page=="about"){
     home.style.display = "none";
     about.style.display = "block";
     experiences.style.display = "experiences";
+    pagePosition = 1;
   }
-  if(windowPosition>50){
+  if(page=="expreiences"){
     home.style.display = "none";
     about.style.display = "none";
     experiences.style.display = "block";
+    pagePosition = 2;
   }
 }
 function adjustNav(){
   //adjust navigation element positions according to the windowposition
   //(go right when on about page and towards left side when on experiences)
-  if(windowPosition<30 && windowPosition>-30){
+  if(pagePosition===0){
     setActive(navHome);
   }
-  if(windowPosition<-70){
+  if(pagePosition===1){
     setActive(navAbout);
   }
-  if(windowPosition>70){
+  if(pagePosition===2){
     setActive(navExperiences);
   }
 }
@@ -55,5 +51,4 @@ function setInactive(element){
   element.style.color = "#999999";
   element.style.fontWeight = "normal";
 }
-window.onresize = adjustMe();
 init();

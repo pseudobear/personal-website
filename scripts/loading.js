@@ -12,6 +12,20 @@ function loadAnimations(){
   setTimeout(() => blinkChar("#name","_"), 1220);
 }
 
+function loadHome(){
+  fadein("#me",0.95,0.04);
+  scrambleText("#sofdev","Software Developer");
+  setTimeout(() => scrambleText("#name","MICHAEL LI"),500);
+  setTimeout(() => fadein("#bio",0.5,0.05),500);
+  setTimeout(() => fadein("#resume-link",1.0,0.05),700);
+  setTimeout(() => blinkChar("#name","_"), 1220);
+}
+function loadAbout(){
+
+}
+function loadExperiences(){
+
+}
 function scrambleText(object,str){
   var obj = document.querySelector(object);
   obj.innerHTML = "";
