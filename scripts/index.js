@@ -16,6 +16,7 @@ function adjustPageDisplay(page){
     about.style.display = "none";
     experiences.style.display = "none";
     pagePosition = 0;
+    loadHome();
   }
   if(page=="about"){
     home.style.display = "none";

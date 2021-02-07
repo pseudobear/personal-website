@@ -1,15 +1,10 @@
 var charlst = ['!','-','_','/','[',']','{','}','=','*','^','?','#'];
-window.onload = loadAnimations();
+window.onLoad(loadAnimations());
 
 function loadAnimations(){
-  fadein("#me",0.95,0.04);
-  scrambleText("#sofdev","Software Developer");
+  fadein("#nav-home", 1.00, 0.05);
   zoomLeft("#nav-experiences",0,5);
   zoomRight("#nav-about",0,5);
-  setTimeout(() => scrambleText("#name","MICHAEL LI"),500);
-  setTimeout(() => fadein("#bio",0.5,0.05),500);
-  setTimeout(() => fadein("#resume-link",1.0,0.05),700);
-  setTimeout(() => blinkChar("#name","_"), 1220);
 }
 
 function loadHome(){
@@ -50,11 +45,14 @@ function scrambleText(object,str){
 
 function fadein(object,targetOpacity,rate){
   var obj = document.querySelector(object);
+  let blur = 5;
   let count = 0;
   var fade = setInterval(() => {
     if(obj.style.opacity >= targetOpacity)clearInterval(fade);
     count += rate;
     obj.style.opacity = count;
+    if(blur != 0) blur--;
+    obj.style.filter = "blur(" +blur +"px)";
   }, 20);
 }
 
