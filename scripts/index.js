@@ -24,7 +24,7 @@ function adjustPageDisplay(page){
     experiences.style.display = "experiences";
     pagePosition = 1;
   }
-  if(page=="expreiences"){
+  if(page=="experiences"){
     home.style.display = "none";
     about.style.display = "none";
     experiences.style.display = "block";
@@ -52,4 +52,5 @@ function setInactive(element){
   element.style.color = "#999999";
   element.style.fontWeight = "normal";
 }
-init();
+
+document.querySelector("#me").onload = init();

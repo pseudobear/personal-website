@@ -62,7 +62,7 @@ function zoomLeft(object,dest,rate){ //*** REQUIRES LEFT PROPERTY AND NO RIGHT
   var move = setInterval(() => {
     let left = parseFloat(obj.style.left);
     let dist = left-dest;
-    if(dist <= 10){
+    if(dist <= 1){
       obj.style.left = dest.toString()+"px";
       clearInterval(move);
       return;
@@ -79,7 +79,7 @@ function zoomRight(object,dest,rate){ //*** REQUIRES RIGHT PROPERTY AND NO LEFT
   var move = setInterval(() => {
     let right = parseFloat(obj.style.right);
     let dist = right-dest;
-    if(dist <= 0){
+    if(dist <= 1){
       obj.style.right = dest.toString()+"px";
       clearInterval(move);
       return;
