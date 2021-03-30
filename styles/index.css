@@ -8,6 +8,7 @@
   letter-spacing: 1.3px;
   color: #999999;
   font-size: 17px !important;
+  z-index: 100;
 }
 #nav-about,#nav-home,#nav-experiences{
   position: relative;
@@ -48,6 +49,7 @@
   bottom: 0;
   right: -20vh;
   opacity: 0;
+  user-select: none;
 }
 #bio{
   opacity: 0;

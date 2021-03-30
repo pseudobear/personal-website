@@ -23,12 +23,14 @@ function adjustPageDisplay(page){
     about.style.display = "block";
     experiences.style.display = "experiences";
     pagePosition = 1;
+    loadAbout();
   }
   if(page=="experiences"){
     home.style.display = "none";
     about.style.display = "none";
     experiences.style.display = "block";
     pagePosition = 2;
+    loadExperiences();
   }
 }
 function adjustNav(){

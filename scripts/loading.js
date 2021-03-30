@@ -1,5 +1,7 @@
 var charlst = ['!','-','_','/','[',']','{','}','=','*','^','?','#'];
-window.onLoad(loadAnimations());
+window.onLoad = loadAnimations();
+
+var homeBlinker = false; // global control for blinking char in home page
 
 function loadAnimations(){
   fadein("#nav-home", 1.00, 0.05);
@@ -8,6 +10,7 @@ function loadAnimations(){
 }
 
 function loadHome(){
+  homeBlinker = false;
   fadein("#me",0.95,0.04);
   scrambleText("#sofdev","Software Developer");
   setTimeout(() => scrambleText("#name","MICHAEL LI"),500);
@@ -16,10 +19,10 @@ function loadHome(){
   setTimeout(() => blinkChar("#name","_"), 1220);
 }
 function loadAbout(){
-
+  homeBlinker = false;
 }
 function loadExperiences(){
-
+  homeBlinker = false;
 }
 function scrambleText(object,str){
   var obj = document.querySelector(object);
@@ -45,14 +48,16 @@ function scrambleText(object,str){
 
 function fadein(object,targetOpacity,rate){
   var obj = document.querySelector(object);
-  let blur = 5;
+  obj.style.opacity == 0;
   let count = 0;
   var fade = setInterval(() => {
-    if(obj.style.opacity >= targetOpacity)clearInterval(fade);
+    if(obj.style.opacity >= targetOpacity){
+      count = targetOpacity;
+      clearInterval(fade);
+    }
     count += rate;
     obj.style.opacity = count;
-    if(blur != 0) blur--;
-    obj.style.filter = "blur(" +blur +"px)";
+    obj.style.filter = "blur(" +(targetOpacity - count) +"px)";
   }, 20);
 }
 
@@ -93,7 +98,12 @@ function zoomRight(object,dest,rate){ //*** REQUIRES RIGHT PROPERTY AND NO LEFT
 function blinkChar(object,char){
   var obj = document.querySelector(object);
   let display = false;
+  homeBlinker = true;
   var blink = setInterval(() => {
+    if(homeBlinker === false){
+      clearInterval(blink);
+      if(display) obj.innerHTML = obj.innerHTML.substring(0,obj.innerHTML.length-1);
+    }
     if(display){
       obj.innerHTML = obj.innerHTML.substring(0,obj.innerHTML.length-1);
       display = false;
