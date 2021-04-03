@@ -1,4 +1,5 @@
 var pagePosition = 0;   //0 is for home, 1 is about and 2 is for experiences
+var me = document.getElementById("me");
 var home = document.getElementById("home");
 var about = document.getElementById("about");
 var experiences = document.getElementById("experiences");
@@ -54,5 +55,4 @@ function setInactive(element){
   element.style.color = "#999999";
   element.style.fontWeight = "normal";
 }
-
-document.querySelector("#me").onload = init();
+me.onload = init();
