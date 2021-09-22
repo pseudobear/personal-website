@@ -1,7 +1,16 @@
 var charlst = ['!','-','_','/','[',']','{','}','=','*','^','?','#'];
 window.onLoad = loadAnimations();
 
-var homeBlinker = false; // global control for blinking char in home page
+var homeAnimations = false; // global control for blinking char in home page
+var intervals = [];
+
+function clearStoredIntervals() {
+  intervals.map((interval) => {
+    console.log(interval);
+    clearInterval(interval);
+    intervals = [];
+  });
+}
 
 function loadAnimations(){
   fadein("#nav-home", 1.00, 0.05);
@@ -10,28 +19,36 @@ function loadAnimations(){
 }
 
 function loadHome(){
-  homeBlinker = false;
+  clearStoredIntervals();
+  homeAnimations = true;
   fadein("#me",0.95,0.04);
   scrambleText("#sofdev","Software Developer");
-  setTimeout(() => scrambleText("#name","MICHAEL LI"),500);
+  setTimeout(() => scrambleText("#name","MICHAEL LI",blinkChar,"#name","_"),500);
   setTimeout(() => fadein("#bio",0.5,0.05),500);
   setTimeout(() => fadein("#resume-link",1.0,0.05),700);
-  setTimeout(() => blinkChar("#name","_"), 1220);
 }
 function loadAbout(){
-  homeBlinker = false;
+  homeAnimations = false;
 }
 function loadExperiences(){
-  homeBlinker = false;
+  homeAnimations = false;
 }
-function scrambleText(object,str){
+function scrambleText(object,str, callback, call1, call2){
   var obj = document.querySelector(object);
   obj.innerHTML = "";
   function assemble(str){
-    if(str.length == 0)return;
+    if(!homeAnimations) {
+      console.log("home animations " +homeAnimations);
+      return;
+    }
+    if(str.length == 0) {
+      if(typeof callback === "function") callback(call1, call2);
+      return;
+    }
     let count = 0;
     obj.innerHTML = obj.innerHTML + "_";
     var scram = setInterval(() => {
+      intervals.push(scram);
       let randomChar = charlst[Math.floor(Math.random()*13)];
       obj.innerHTML = obj.innerHTML.substring(0,obj.innerHTML.length-1)
                     + randomChar; 
@@ -51,6 +68,7 @@ function fadein(object,targetOpacity,rate){
   obj.style.opacity == 0;
   let count = 0;
   var fade = setInterval(() => {
+    intervals.push(fade);
     if(obj.style.opacity >= targetOpacity){
       count = targetOpacity;
       clearInterval(fade);
@@ -65,6 +83,7 @@ function zoomLeft(object,dest,rate){ //*** REQUIRES LEFT PROPERTY AND NO RIGHT
   var obj = document.querySelector(object);
   obj.style.left = "2000px";
   var move = setInterval(() => {
+    intervals.push(move);
     let left = parseFloat(obj.style.left);
     let dist = left-dest;
     if(dist <= 1){
@@ -82,6 +101,7 @@ function zoomRight(object,dest,rate){ //*** REQUIRES RIGHT PROPERTY AND NO LEFT
   var obj = document.querySelector(object);
   obj.style.right = "2000px";
   var move = setInterval(() => {
+    intervals.push(move);
     let right = parseFloat(obj.style.right);
     let dist = right-dest;
     if(dist <= 1){
@@ -98,9 +118,9 @@ function zoomRight(object,dest,rate){ //*** REQUIRES RIGHT PROPERTY AND NO LEFT
 function blinkChar(object,char){
   var obj = document.querySelector(object);
   let display = false;
-  homeBlinker = true;
   var blink = setInterval(() => {
-    if(homeBlinker === false){
+    intervals.push(blink);
+    if(homeAnimations === false){
       clearInterval(blink);
       if(display) obj.innerHTML = obj.innerHTML.substring(0,obj.innerHTML.length-1);
     }
