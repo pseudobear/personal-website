@@ -81,7 +81,6 @@ function fadein(object,targetOpacity,rate){
     intervals.push(fade);
     if(obj.style.opacity >= targetOpacity){
       count = targetOpacity;
-      adjustmentFactor *= rate;
       obj.style.filter = "";
       clearInterval(fade);
     }

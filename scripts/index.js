@@ -13,10 +13,8 @@ function init (){
   adjustPageDisplay("home");
 }
 function adjustPageDisplay(page){
-  console.log("status: ");
-  console.log(home.style.display);
-  console.log(about.style.display);
-  console.log(experiences.style.display);
+  let currentDisplay = getCurrentDisplay();
+  console.log("status: " +currentDisplay);
   if(page=="home" && home.style.display === "none"){
     home.style.display = "block";
     about.style.display = "none";
@@ -29,7 +27,7 @@ function adjustPageDisplay(page){
     about.style.display = "block";
     experiences.style.display = "experiences";
     pagePosition = 1;
-    loadAbout();
+    zoomUp("#" + currentDisplay, -2000, 2, loadAbout);
   }
   if(page=="experiences" && experiences.style.display ==="none"){
     home.style.display = "none";
@@ -43,9 +41,9 @@ function adjustPageDisplay(page){
 function getCurrentDisplay() {
   if(home.style.display === "block") {
     return "home";
-  else if(about.style.display === "block") {
+  } else if(about.style.display === "block") {
     return "about";
-  else if(experiences.style.display === "block) {
+  } else if(experiences.style.display === "block") {
     return "experiences";
   }
 }
