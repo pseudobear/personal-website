@@ -27,10 +27,19 @@ function loadHome(){
   setTimeout(() => fadein("#bio",0.5,0.05),500);
   setTimeout(() => fadein("#resume-link",1.0,0.05),700);
 }
+
+function deloadHome() {
+  clearStoredIntervals();
+  document.querySelector("#bio").style.opacity = 0;
+  document.querySelector("#resume-link").style.opacity = 0;
+  document.querySelector("#name").innerHTML = "_";
+}
 function loadAbout(){
+  deloadHome();
   homeAnimations = false;
 }
 function loadExperiences(){
+  deloadHome();
   homeAnimations = false;
 }
 function scrambleText(object,str, callback, call1, call2){
@@ -65,7 +74,7 @@ function scrambleText(object,str, callback, call1, call2){
 
 function fadein(object,targetOpacity,rate){
   var obj = document.querySelector(object);
-  obj.style.opacity == 0;
+  obj.style.opacity = 0;
   let count = 0;
   var fade = setInterval(() => {
     intervals.push(fade);

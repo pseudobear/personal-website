@@ -1,8 +1,8 @@
-#about-first {
-  height: 70vh;
-  margin: 4%;
-  filter: drop-shadow(35px 25px 1px #888888);
-}
-#about-summary {
-  padding-right: 4%;
+#about-head-container {
+  position: relative;
+  top: 40%;
+  width: 20%;
+  height: 10%;
+  margin: auto;
+  background-color: blue;
 }
