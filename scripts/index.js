@@ -40,6 +40,15 @@ function adjustPageDisplay(page){
   }
   adjustNav();
 }
+function getCurrentDisplay() {
+  if(home.style.display === "block") {
+    return "home";
+  else if(about.style.display === "block") {
+    return "about";
+  else if(experiences.style.display === "block) {
+    return "experiences";
+  }
+}
 function adjustNav(){
   //adjust navigation element positions according to the windowposition
   //(go right when on about page and towards left side when on experiences)

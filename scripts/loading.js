@@ -37,6 +37,7 @@ function deloadHome() {
 function loadAbout(){
   deloadHome();
   homeAnimations = false;
+  fadein("#about-banner",1.0, 0.1);
 }
 function loadExperiences(){
   deloadHome();
@@ -80,6 +81,8 @@ function fadein(object,targetOpacity,rate){
     intervals.push(fade);
     if(obj.style.opacity >= targetOpacity){
       count = targetOpacity;
+      adjustmentFactor *= rate;
+      obj.style.filter = "";
       clearInterval(fade);
     }
     count += rate;
@@ -106,6 +109,22 @@ function zoomLeft(object,dest,rate){ //*** REQUIRES LEFT PROPERTY AND NO RIGHT
   }, 20);
 }
 
+function zoomUp(object,dest,rate,callback){ // *** REQUIRES TOP PROPERTY AND NO BOTTOM
+  var obj = document.querySelector(object);
+  let originalTop = obj.style.top;
+  let adjustmentFactor = 1;
+  var move = setInterval(() => {
+    intervals.push(move);
+    let objTop = parseFloat(obj.style.top);
+    if(objTop < dest) {
+      clearInterval(move);
+      callback();
+      obj.style.top = originalTop;
+    }
+    obj.style.top = (objTop + adjustmentFactor).toString() + "px";
+    adjustmentFactor *= rate;
+  }, 20);
+}
 function zoomRight(object,dest,rate){ //*** REQUIRES RIGHT PROPERTY AND NO LEFT
   var obj = document.querySelector(object);
   obj.style.right = "2000px";

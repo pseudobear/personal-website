@@ -1,8 +1,21 @@
-#about-head-container {
+#about-banner-container {
   position: relative;
   top: 40%;
-  width: 20%;
+  width: 50%;
   height: 10%;
   margin: auto;
-  background-color: blue;
+  text-align: center;
+}
+#about-banner {
+  width: 100%;
+  height: 100%;
+  background-image: url("../resources/Jackheader.jpg");
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  
+}
+#about-header {
 }
