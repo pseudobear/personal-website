@@ -1,4 +1,5 @@
 var pagePosition = 0;   //0 is for home, 1 is about and 2 is for experiences
+var me = document.getElementById("me");
 var home = document.getElementById("home");
 var about = document.getElementById("about");
 var experiences = document.getElementById("experiences");
@@ -8,29 +9,42 @@ var navExperiences = document.getElementById("nav-experiences");
 
 function init (){
   adjustNav();
+  home.style.display = "none";
   adjustPageDisplay("home");
 }
 function adjustPageDisplay(page){
-  if(page=="home"){
+  let currentDisplay = getCurrentDisplay();
+  console.log("status: " +currentDisplay);
+  if(page=="home" && home.style.display === "none"){
     home.style.display = "block";
     about.style.display = "none";
     experiences.style.display = "none";
     pagePosition = 0;
     loadHome();
   }
-  if(page=="about"){
+  if(page=="about" && about.style.display === "none"){
     home.style.display = "none";
     about.style.display = "block";
     experiences.style.display = "experiences";
     pagePosition = 1;
-    loadAbout();
+    zoomUp("#" + currentDisplay, -2000, 2, loadAbout);
   }
-  if(page=="experiences"){
+  if(page=="experiences" && experiences.style.display ==="none"){
     home.style.display = "none";
     about.style.display = "none";
     experiences.style.display = "block";
     pagePosition = 2;
     loadExperiences();
+  }
+  adjustNav();
+}
+function getCurrentDisplay() {
+  if(home.style.display === "block") {
+    return "home";
+  } else if(about.style.display === "block") {
+    return "about";
+  } else if(experiences.style.display === "block") {
+    return "experiences";
   }
 }
 function adjustNav(){
@@ -38,12 +52,18 @@ function adjustNav(){
   //(go right when on about page and towards left side when on experiences)
   if(pagePosition===0){
     setActive(navHome);
+    setInactive(navAbout);
+    setInactive(navExperiences);
   }
   if(pagePosition===1){
     setActive(navAbout);
+    setInactive(navHome);
+    setInactive(navExperiences);
   }
   if(pagePosition===2){
     setActive(navExperiences);
+    setInactive(navHome);
+    setInactive(navAbout);
   }
 }
 function setActive(element){
@@ -54,5 +74,4 @@ function setInactive(element){
   element.style.color = "#999999";
   element.style.fontWeight = "normal";
 }
-
-document.querySelector("#me").onload = init();
+me.onload = init();
